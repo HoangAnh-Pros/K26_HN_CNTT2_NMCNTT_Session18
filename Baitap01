@@ -14,4 +14,4 @@ Phần 3. Kiểm thử
 - Phần 2 : 
 + Sửa lại tên miền và Bấm f12 kiểm tra phần status để kiêm tra , nếu 200 thì đã lấy dữ liệu server thành công
 - Phần 3 :
-+ Nếu đã sưa đúng mà vẫn hiện lỗi 404 NOT FOUND thì lỗi nằm ở server
++ Nếu đã sưa đúng mà vẫn hiện lỗi 404 NOT FOUND thì lỗi nằm ở server không tìm thấy trang
