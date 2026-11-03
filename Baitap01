@@ -1,0 +1,17 @@
+Bài 1 : Sự cố không truy cập được hệ thống quản trị
+*Vấn đề : NAM truy cập trang quản trị nhung liên tục bị báo lỗi. Nam khẳng định do server bị sập.
+*Yêu cầu : Phần 1. Phân tích
+- Xác định Input (Tên miền) / Output (IP address) và mô tả sơ đồ luồng dữ liệu của DNS.
+Phần 2. Triển khai
+- Đề xuất quy trình kiểm tra mã trạng thái HTTP Status Code để xác nhận xem yêu cầu đã chạm tới máy chủ hay chưa.
+Phần 3. Kiểm thử
+- Giả định Nam sửa đúng tên miền nhưng vẫn nhận mã "404 Not Found", hệ thống đang gặp vấn đề gì?
+*Cách giải quyết :
+- Phần 1 :
++ Input: phong-dieu-phoi.grenlog.vn ( Nam nhập thiếu 1 chữ e )
++ Output : can't reach this shite ( không thể truy cập trang ) , **DNS_PROBE_FINISHED_NXDOMAIN**
++ Mô tả luồng dữ liệu DNS: Nhập tên miền sai -> hệ thống kiểm tra cache xem đã từng đăng nhập chưa để lấy dữ liệu -> Nếu chưa thì sẽ thử truy câp web -> không thành công và trả về không thể truy cập trang **DNS_PROBE_FINISHED_NXDOMAIN**
+- Phần 2 : 
++ Sửa lại tên miền và Bấm f12 kiểm tra phần status để kiêm tra , nếu 200 thì đã lấy dữ liệu server thành công
+- Phần 3 :
++ Nếu đã sưa đúng mà vẫn hiện lỗi 404 NOT FOUND thì lỗi nằm ở server
