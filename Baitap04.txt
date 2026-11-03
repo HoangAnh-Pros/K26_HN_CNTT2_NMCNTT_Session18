@@ -1,0 +1,22 @@
+Bài 4 : Sự cố xung đột phiên đăng nhập trên trình duyệt
+*Vấn đề: Một quản trị viên điều phối cần quản lý đồng thời: tài khoản cá nhân, tài khoản quản trị hệ thống GreenLog, và tài khoản kiểm thử (Sandbox). Việc dùng chung một cửa sổ trình duyệt khiến các phiên đăng nhập bị xung đột (Session Conflict).
+*Yêu cầu: 
+*Phần 1. Phân tích
+- So sánh sự khác biệt về lưu trữ trạng thái giữa Incognito Mode (tạm thời trên RAM) và Dedicated Profile (lâu dài trên ổ cứng).
+*Phần 2. Triển khai
+- Mô tả quy trình tạo và đồng bộ hóa Cloud Sync để bảo vệ Bookmark khi đổi máy tính.
+*Phần 3. Kiểm thử
+- Giả định làm việc trên máy tính công cộng, hãy đề xuất quy tắc sử dụng Guest Profile để bảo mật.
+*Cách làm bài:
+*Phần 1: Phân Tích
+- Incognito Mode (tạm thời trên RAM)
++ Chỉ lưu trữ tạm thời trêm RAM. Khi đóng cửa sổ ẩn danh, toàn bộ cookie, lịch sử duyệt web và thông tin đăng nhập sẽ bị xóa sạch.
+- Dedicated Profile (lâu dài trên ổ cứng).
++ Lưu trữ lâu dài trên ổ cứng. Cho phép mở song song nhiều cửa sổ với các tài khoản hoàn toàn khác nhau.
+*Phần 2: Triển Khai
+- Đồng bộ hóa Cloud Sync:
++ Đăng nhập tài khoản Google tương ứng vào từng Profile
++ Bật tính năng turn on sync để lưu trữ toàn bộ bookmark, lịch sử, mật khẩu lên đám mây, giúp bảo vệ dữ liệu không bị mất khi thay đổi máy tính mới.
+*Phần 3: Kiểm Thử
+- Quy tắc 1: Không bao giờ đăng nhập tài khoản cá nhân hoặc tài khoản quản trị vào trình duyệt mặc định trên máy tính công cộng.
+- Quy tắc 2: Mở trình duyệt ở chế độ Khách bằng cách nhấp vào biểu tượng hồ sơ và chọn Guest. Không lưu lịch sử duyệt web, cookie hay thông tin điền biểu mẫu.
