@@ -1,1 +1,12 @@
-
+Bài 2 : Sự cố phiên làm việc trên hệ thống vận tải
+*Vấn đề: Hệ thống vận tải yêu cầu shipper phải đăng nhập để nhận đơn. Tuy nhiên, mỗi lần shipper đóng trình duyệt hoặc load lại trang, giỏ hàng phụ tùng xe lại bị trống rỗng và shipper phải đăng nhập lại từ đầu
+*Cách giải quyết:
+-Phần 1: phân tích
++ Cookies là bộ nhớ ngắn hạn  , chỉ lưu mật khẩu và thông tin nhẹ nên chỉ chiếm 4Kb
++ cache là bộ nhớ đệm của trình duyệt lưu lại thông tin đang nhập và lịch sử web nên chứa nhiều dung lượng hơn
+-Phần 2: Triển khai 
+Cấu trúc mẫu tin cookies cần thiết :
+         -Token: chứa thông tin , địa chỉ IP người dùng
+         -Max-age: thời gian sống của token để tránh trg hợp bị đánh cắp , rò rỉ thông tin người dùng.
+         -Kiểm thử: Nếu shipper thây đổi giao diện nhwung trình duyệt vẫn hiện màu cũ -> Những thao tác để Hard reload để xóa bộ nhớ đệm cache 
+--> f12 -->application --> kiểm tra dao diện --> bấm delete hoặc ctrl + shift + f5
